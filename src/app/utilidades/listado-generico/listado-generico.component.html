@@ -1,0 +1,9 @@
+ <div *ngIf="!peliculas">
+  <img src="https://i.sstatic.net/kOnzy.gif" />
+</div>
+<div *ngIf="peliculas?.length==0">
+  <p> No hay peliculas para mostrar</p>
+</div>
+<ng-container *ngIf="peliculas && peliculas?.length > 0">
+<ng-content select="[contenido]"></ng-content>
+</ng-container>

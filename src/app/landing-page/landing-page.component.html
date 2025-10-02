@@ -1,0 +1,7 @@
+  <p>{{title}}</p>
+  <h3>Datos de la pelicula</h3>
+  <app-listado-peliculas [peliculas]="peliculas"></app-listado-peliculas>
+  <h3>Nuevos Estrenos</h3>
+  <app-listado-peliculas [peliculas]="peliculasEstreno"></app-listado-peliculas>
+  <input type="file" style="display: none;" #cargador>
+  <button (click)="cargador.click()">Cargar Archivos</button>
