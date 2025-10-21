@@ -16,6 +16,13 @@ import { CrearActorComponent } from './actores/crear-actor/crear-actor.component
 import { CrearPeliculaComponent } from './peliculas/crear-pelicula/crear-pelicula.component';
 import { CrearCinesComponent } from './cines/crear-cines/crear-cines.component';
 import { IndiceCinesComponent } from './cines/indice-cines/indice-cines.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormularioGeneroComponent } from './generos/formulario-genero/formulario-genero.component';
+import { EditarGeneroComponent } from './generos/editar-genero/editar-genero.component';
+import { FiltroPeliculasComponent } from './peliculas/filtro-peliculas/filtro-peliculas.component';
+import { FormularioActoresComponent } from './actores/formulario-actores/formulario-actores.component';
+import { EditarActorComponent } from './actores/editar-actor/editar-actor.component';
+import { InputImgComponent } from './utilidades/input-img/input-img.component';
 
 @NgModule({
   declarations: [
@@ -31,13 +38,20 @@ import { IndiceCinesComponent } from './cines/indice-cines/indice-cines.componen
     CrearActorComponent,
     CrearPeliculaComponent,
     CrearCinesComponent,
-    IndiceCinesComponent
+    IndiceCinesComponent,
+    FormularioGeneroComponent,
+    EditarGeneroComponent,
+    FiltroPeliculasComponent,
+    FormularioActoresComponent,
+    EditarActorComponent,
+    InputImgComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
