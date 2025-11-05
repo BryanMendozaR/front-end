@@ -1,8 +1,8 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { primeraLetraMayuscula } from 'src/app/utilidades/validadores/primeraLetraMayuscula';
-import { GeneroCreacionDTO } from '../genero';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {primeraLetraMayuscula} from 'src/app/utilidades/validadores/primeraLetraMayuscula';
+import {GeneroCreacionDTO} from '../genero';
 
 @Component({
   selector: 'app-formulario-genero',
@@ -12,10 +12,13 @@ import { GeneroCreacionDTO } from '../genero';
 export class FormularioGeneroComponent implements OnInit {
 
   @Output()
-  submit: EventEmitter<GeneroCreacionDTO> = new EventEmitter<GeneroCreacionDTO>();
+  onSubmit: EventEmitter<GeneroCreacionDTO> = new EventEmitter<GeneroCreacionDTO>();
 
   @Input()
   modelo: GeneroCreacionDTO;
+
+  @Input()
+  errores: string[] = [];
 
   form: FormGroup;
 
@@ -23,7 +26,7 @@ export class FormularioGeneroComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      nombre: ['', [Validators.required, Validators.minLength(3), primeraLetraMayuscula()]],
+      nombre: ['', [Validators.required, Validators.minLength(3), primeraLetraMayuscula()]], //
     });
 
     if (this.modelo !== undefined) {
@@ -47,7 +50,7 @@ export class FormularioGeneroComponent implements OnInit {
   }
 
   guardarCambios() {
-    this.submit.emit(this.form.value);
+    this.onSubmit.emit(this.form.value);
 
   }
 

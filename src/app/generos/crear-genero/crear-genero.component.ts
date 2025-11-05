@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { primeraLetraMayuscula } from 'src/app/utilidades/validadores/primeraLetraMayuscula';
-import { GeneroCreacionDTO } from '../genero';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {parsearErroresAPI} from 'src/app/utilidades/utilidades';
+import {GeneroCreacionDTO} from '../genero';
+import {GenerosService} from '../services/Genero.Service';
 
 @Component({
   selector: 'app-crear-genero',
@@ -11,15 +11,17 @@ import { GeneroCreacionDTO } from '../genero';
 })
 export class CrearGeneroComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  errores: string[] = [];
+
+  constructor(private router: Router, private generosService: GenerosService) { }
 
   ngOnInit(): void {
   }
 
   guardarCambios(genero: GeneroCreacionDTO): void {
-
-    console.log(genero);
-    this.router.navigate(['/generos']);
+    this.generosService.crear(genero).subscribe(() => {
+      this.router.navigate(['/generos']);
+    }, error => this.errores = parsearErroresAPI(error));
   }
 
 }
